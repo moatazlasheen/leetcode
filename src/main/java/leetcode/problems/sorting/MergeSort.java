@@ -5,9 +5,6 @@ package leetcode.problems.sorting;
  * 
  * 912. Sort an Array
 Medium
-5.3K
-704
-Companies
 
 Given an array of integers nums, sort the array in ascending order and return it.
 
