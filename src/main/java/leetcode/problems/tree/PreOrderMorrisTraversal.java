@@ -1,8 +1,6 @@
 package leetcode.problems.tree;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 /**
@@ -88,7 +86,7 @@ public class PreOrderMorrisTraversal {
             	} 
             	
             	// 2- the right most node is already linked to some root
-            	// then break the remp link and move to the right subtree of current
+            	// then break the temporary link and move to the right subtree of current
             	if (rightMostNode.right == current) {
             		rightMostNode.right= null;
             		current = current.right;
