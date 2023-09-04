@@ -65,20 +65,18 @@ public class NextRightPopulating {
 		
 		Node levelStart = root;
 		Node current = root;
-		while (current != null) {
-			if (current.left != null) {
-				current.left.next = current.right;
-				if (current.next==null) {
-					current = levelStart.left;
-					levelStart = levelStart.left;
-				} else {
-					current.right.next = current.next.left;
-					current = current.next;
+		while (levelStart != null) {
+			current = levelStart;
+			while (current != null) {
+				if (current.left != null) {
+					current.left.next = current.right;
+					if (current.next != null) {
+						current.right.next = current.next.left;
+					}
 				}
-				
-			} else {
-				current = current.left;
-			}
+				current = current.next;
+			} 
+			levelStart = levelStart.left;
 		}
 		
 		return root;
