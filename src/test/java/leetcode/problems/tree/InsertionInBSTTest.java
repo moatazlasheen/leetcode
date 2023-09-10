@@ -22,6 +22,11 @@ class InsertionInBSTTest {
 		// this is not the only solution, the value can be placed in place 
 		// of an existing node and the existing node can be put in some other place
 		// keeping in mind that the tree should still be a BST
+		
+		// if the implementation changes, the test cases may fail although the solution is okay
+		// a better assertion is to make sure that the actual is a valid BST having the same 
+		// numbers mentioned in the original tree besides the passed integer,
+		// i don't know how to do this in a simple way yet
 		assertTrue(sameTree.isSameTree(expected, actual));
 	}
 	
