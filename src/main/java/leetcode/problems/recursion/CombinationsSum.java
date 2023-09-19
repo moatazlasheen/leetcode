@@ -65,15 +65,16 @@ public class CombinationsSum {
             combinations.add(new ArrayList<>(currentCombination));
             return;
         } 
+        if (currentSum > target) {
+            return;
+        } 
         
         for ( int i = startIndex; i < candidates.length; i++)  {
-            if (currentSum + candidates[i] <= target) {
-                currentCombination.add(candidates[i]);
-                currentSum += candidates[i];
-                fillInCombinationsWithSum(candidates, currentCombination, combinations, target, i, currentSum);
-                currentCombination.remove(currentCombination.size()-1);
-                currentSum -= candidates[i];
-            }
+        	currentCombination.add(candidates[i]);
+            currentSum += candidates[i];
+            fillInCombinationsWithSum(candidates, currentCombination, combinations, target, i, currentSum);
+            currentCombination.remove(currentCombination.size()-1);
+            currentSum -= candidates[i];
         }
 
     }
