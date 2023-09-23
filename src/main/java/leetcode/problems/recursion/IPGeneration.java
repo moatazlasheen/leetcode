@@ -8,22 +8,33 @@ public class IPGeneration {
 	List<String> restoreIpAddresses(String input) {
 		List<String> result = new ArrayList<>();
 		if (input != null && input.length()>3 && input.length()<13) {
-			restoreIpAddresses(input, result, "", 0, 0);
+			restoreIpAddresses(input, result, new StringBuilder(), 0, 0);
 		}
 		
 		return result;
 	}
 
-	private void restoreIpAddresses(String input, List<String> result, String path, int segments, int startIndex) {
+	private void restoreIpAddresses(String input, List<String> result, StringBuilder path, int segments, int startIndex) {
 		if (segments == 4 && startIndex == input.length()) {
-			result.add(path.substring(0, path.length()-1));
+			result.add(path.toString());
+			return;
+		}
+		if (segments > 4) {
 			return;
 		}
 		
 		for (int i = startIndex; i<input.length() && i<startIndex+3; i++) {
 			String potentialSegment = input.substring(startIndex, i+1);
 			if(isValidSegment(potentialSegment)) {
-				restoreIpAddresses(input, result, path + potentialSegment + ".", segments+1, i+1);
+				if (path.length() > 0) {
+					path.append(".");
+				}
+				restoreIpAddresses(input, result, path.append(potentialSegment), segments+1, i+1);
+				if (path.lastIndexOf(".") > -1) {
+					path.delete(path.lastIndexOf("."), path.length());
+				} else {
+					path.delete(0, path.length());
+				}
 			}
 		}
 	}
