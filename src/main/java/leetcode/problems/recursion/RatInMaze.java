@@ -19,10 +19,6 @@ public class RatInMaze {
 			return;
 		}
 		
-		if (row < 0 || row >= n || col < 0 || col >= n || m[row][col] == 0 || visited[row][col] == true)  {
-		    return;
-		}
-		
 		visited[row][col] = true;
 		
 		// try down
