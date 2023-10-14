@@ -49,20 +49,41 @@ public class ClimbingStairs {
 	// if you write down the results for 1,2,3,4,5,6 steps, you will find the pattern
 	// [1, 2, 3, 5, 8], except that fibonacci series starts with 0, 1, 1, 2, 3
 	// but this series starts 1, 2 , 3, 5
+//	// TC : O(n), SC: O(n)
+//	public int climbStairs(int n) {
+//        if (n < 3) {
+//            return n;
+//        }
+//
+//        int [] dp = new int [n];
+//        dp[0] = 1;
+//        dp[1] = 2;
+//
+//        for (int i = 2; i < n; i++ ) { 
+//            dp[i] = dp[i-1] + dp[i-2];
+//        }
+//
+//        return dp[n-1];
+//        
+//    }
+	
+	// TC : O(n), SC: O(1)
 	public int climbStairs(int n) {
         if (n < 3) {
             return n;
         }
 
-        int [] dp = new int [n];
-        dp[0] = 1;
-        dp[1] = 2;
-
-        for (int i = 2; i < n; i++ ) { 
-            dp[i] = dp[i-1] + dp[i-2];
+        int beforePrev = 1;
+        int prev = 2;
+        int current;
+        for (int i = 3; i <= n; i++ ) { 
+            current = beforePrev + prev;
+            beforePrev = prev;
+            prev = current;
+            
         }
 
-        return dp[n-1];
+        return prev;
         
     }
 
